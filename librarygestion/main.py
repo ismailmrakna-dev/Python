@@ -88,7 +88,20 @@ class Library :
             print(book) 
     def display_members(self):
         for member in self.members:
-            print(member)                  
+            print(member)
+    def total_books(self):
+        return len(self.books) 
+    def available_books(self):
+        comp=0
+        for book in self.books:
+            if(book.status):
+                comp+=1
+        return comp
+    def borrowed_books(self):
+        return len(self.books)-self.available_books()
+    def total_members(self):
+        return len(self.members)
+                                        
                   
 class PhysicalBook(Book):
     def __init__(self,book_id, title, author, year, shelf_number):
