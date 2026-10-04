@@ -86,6 +86,28 @@ class PhysicalBook(Book):
     def __init__(self,book_id, title, author, year, shelf_number):
         super().__init__(book_id, title, author, year)
         self.shelf_number=shelf_number
+    def display_info(self):
+        status="Available" if self.available else "Not available"
+        print(f"ID: {self.id}")  
+        print(f"Title: {self.title}")  
+        print(f"Author: {self.author}")  
+        print(f"Year: {self.year}")  
+        print(f"Status: {status}")
+        print(f"Shelf Number: {self.shelf_number}")
+class EBook(Book):
+    def __init__(self,book_id, title, author, year, file_size, format):
+        super().__init__(book_id, title, author, year)
+        self.file_size= file_size
+        self.format=format 
+    def display_info(self):
+        status="Available" if self.available else "Not available"
+        print(f"ID: {self.id}")  
+        print(f"Title: {self.title}")  
+        print(f"Author: {self.author}")  
+        print(f"Year: {self.year}")  
+        print(f"Status: {status}") 
+        print(f"File Size: {self.file_size}")
+        print(f"Format: .{self.format}")         
 
 book1=Book(1,"Clean Code", "Robert C.Martin", 2008)   
 book2=Book(2,"Python Crash Course", "Eric Matthes", 2023)  
