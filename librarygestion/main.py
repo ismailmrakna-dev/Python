@@ -28,8 +28,16 @@ class Member:
     def __init__(self, member_id, name, email):
         self.id=member_id
         self.name=name
-        self.author=email
+        self.__email=email
         self.borrowed_books=[]
+    @property
+    def email(self):
+        return self.__email
+    @email.setter
+    def email(self, value):
+        if "@" not in value:
+          raise ValueError("Invalid email.")
+        self.__email = value    
     def display_info(self):
         status="Available" if self.available else "Not available"
         print(f"ID: {self.id}")  
