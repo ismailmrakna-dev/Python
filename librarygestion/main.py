@@ -41,7 +41,13 @@ class Member:
         self.borrowed_books.append(book)
         
     def return_book(self, book):
-        self.borrowed_books.pop(book)
+        index=0
+        for book_bor in self.borrowed_books:
+            if(book.id == book_bor.id):
+                break
+            index += 1
+            
+        self.borrowed_books.remove(index)
         book.return_book()
 class Library :  
     def __init__(self):
@@ -62,17 +68,22 @@ class Library :
                 return member
         return None
     def borrow_book(self,member_id, book_id):
-        book=self.find_book(self, book_id)
-        member=self.find_member(self, member_id)
-        member.borrow
+        book= self.find_book(self, book_id)
+        member= self.find_member(self, member_id)
+        member.borrow_book(book)
     def return_book(self,member_id,book_id):
-        pass
+        book= self.find_book(self, book_id)
+        member= self.find_member(self, member_id)
+        member.return_book(book)
     def display_books(self):
-        pass  
+        for book in self.books:
+            print(book) 
     def display_members(self):
-        pass                   
+        for member in self.members:
+            print(member)                  
                   
-
+class PhysicalBook(Book):
+    def __init__
 
 book1=Book(1,"Clean Code", "Robert C.Martin", 2008)   
 book2=Book(2,"Python Crash Course", "Eric Matthes", 2023)  
